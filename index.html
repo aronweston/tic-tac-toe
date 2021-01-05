@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic Tac Toe</title>
-  <link rel="css/style.css">
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <script src="js/main.js"></script>
+
+  <div class="container">
+    <div class="row">
+      <form class="row">
+        <div class="input-field">
+          <input id="one_player" type="button" class="btn" value="One Player" class="validate">
+          <input id="two_players" type="button" class="btn" value="Two Players" class="validate">
+        </div>
+      </form>
+      <!-- Two players -->
+      <form id="two-players" class="row">
+        <div class="input-field">
+          <input id="player_one" placeholder="Player One" type="text" class="validate">
+          <input id="player_two" placeholder="Player Two" type="text" class="validate">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Play</button>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- Players -->
+    <div id="player-cards"></div>
+
+
+
+
+    <div id="board">
+      <div class="square" id="top-left"></div>
+      <div class="square" id="top-center"></div>
+      <div class="square" id="top-right"></div>
+      <div class="square" id="middle-left"></div>
+      <div class="square" id="middle-center"></div>
+      <div class="square" id="middle-right"></div>
+      <div class="square" id="bottom-left"></div>
+      <div class="square" id="bottom-center"></div>
+      <div class="square" id="bottom-right"></div>
+    </div>
+
+   
+    <!-- <a id="play-again" class="waves-effect waves-light btn-large"><i class=""></i>Play Again</a> -->
+  </div>
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
