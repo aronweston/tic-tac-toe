@@ -2,26 +2,22 @@
 
 ### ToDo's 
 - [x] Build out the board
-- [ ] Sort out the business logic after a basic board is created.
+
+* Need to figure out a way to update the current  
+
+
+This will add the loss/win to the prop but I need to get localStorage to update the value. Or is there an easier way of doing this without 
 
 
 
-Possibilities 
-### Straight lines
-1. Top-left, top-center, top-right
-2. midde-left, top-center, top-right
-3. Top-left, middle-left, top-right
-
-1. Diagonal: top-left, middle-center, bottom right
-2. Top-middle, middle-center, 
 
 
 
-      //Horizontal win conditions are left word of the id: top, middle, bottom
-        //Vertical: right word of the id - left, center, right
-        //Diagonal
-        //Tie = the combined length of both arrays are equal to 9
-        // //loop through or check if the array contains the winning   
+//Horizontal win conditions are left word of the id: top, middle, bottom
+//Vertical: right word of the id - left, center, right
+//Diagonal
+//Tie = the combined length of both arrays are equal to 9
+// //loop through or check if the array contains the winning   
 
 
 

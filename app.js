@@ -22,11 +22,11 @@ const game = {
         const p2 = game.playerTwo;
         //TODO: disable click so they don't chuck in trash into the array, no more entries after the single click
         if (p1.turn === true) {
-            document.querySelector(e.target).innerHTML("<img src='img/cross.svg'></>");
+            $(e.target).html("<img src='img/cross.svg'></>");
             p1.choices.push(e.target.id);
             p1.turn = false;
         } else {
-            document.querySelector(e.target).innerHTML("<img src='img/nought.svg'></>");
+            $(e.target).html("<img src='img/nought.svg'></>");
             p2.choices.push(e.target.id);
             p1.turn = true;
         }
@@ -35,50 +35,71 @@ const game = {
     reload: function () {
         window.location.reload();
     },
+    loop: function (arr, arrHoz, arrVert) {
+        arr.forEach(item => {
+            let dashIndex = item.indexOf('-')
+            let hoz = item.slice(0, dashIndex);
+            let vert = item.slice(dashIndex + 1, item.length);
+            arrHoz.push(hoz);
+            arrVert.push(vert);
+        })
+    },
     checkWinner: function (p1, p2) {
-        const pOne = game.playerOne;
-        const pTwo = game.playerTwo;
-        const tie = p1.length + p2.length;
-
-        console.log(p1.length, p2.length);
-
-        //If the length is less then 3 then we don't care
+        //If the length of the current choices is less then 3 then we don't care because no one can even win yet. 
         if (p1.length >= 3 || p2.length >= 3) {
+            const tie = p1.length + p2.length;
             if (tie >= 9) {
                 alert("it's a tie");
                 window.location.reload();
             } else {
+                //Empty choices arrays
+                const p1Hoz = [];
+                const p1Vert = [];
+                const p2Hoz = [];
+                const p2Vert = [];
+
+                //Winning conditions
                 const hoz = ['top', 'middle', 'bottom'];
                 const vert = ['left', 'center', 'right'];
-                const leftDiag = ['top-left', 'middle-center', 'bottom-right'];
-                const rightDiag = ['top-right', 'middle-center', 'bottom-left'];
+                const leftD = ['top-left', 'middle-center', 'bottom-right'];
+                const rightD = ['top-right', 'middle-center', 'bottom-left'];
 
-                let p1Hoz = [];
-                let p1Vert = [];
-                let p2Hoz = [];
-                let p2Vert = [];
+                //Create two new arrays. These arrays hold the horizontal and vertical values of the player choices. 
+                game.loop(p1, p1Hoz, p1Vert);
+                game.loop(p2, p2Hoz, p2Vert);
 
-                //Create a two new arrays, the hoz and vertical values of player one
-                p1.forEach(item => {
-                    let dashIndex = item.indexOf('-')
-                    let hoz = item.slice(0, dashIndex);
-                    let vert = item.slice(dashIndex + 1, item.length);
-                    p1Hoz.push(hoz);
-                    p1Vert.push(vert);
-                })
+                // //Win Conditions
+                // //Player 1 - Horizontal values
 
-                p2.forEach(item => {
-                    let dashIndex = item.indexOf('-')
-                    let hoz = item.slice(0, dashIndex);
-                    let vert = item.slice(dashIndex + 1, item.length);
-                    p2Hoz.push(hoz);
-                    p2Vert.push(vert);
-                })
+                // //diag
+                // const p1leftDiag = p1.every(v => v === leftD);
 
-                let p1hozTop = p1Hoz.every(function (value) {
-                    return value === hoz[0];
-                })
+                // console.log(p1);
+                // console.log(p1leftDiag);
 
+
+                const p1Top = p1Hoz.every(v => v === hoz[0]);
+                if (p1Top) {
+                    alert('Player 1 wins Top Row');
+                    game.playerOne.results.won++;
+                    game.playerTwo.results.lost++;
+
+                    //Game finished conditions
+                    game.playerOne.choices = [];
+                    game.playerTwo.choices = [];
+                    let x = document.getElementById('board').children;
+                    let y = Array.from(x);
+                    y.forEach(square => {
+                        square.childNodes[0].remove();
+                    })
+                    console.log(y);
+
+
+                    //Update the score
+                    $('#first-player span').html(`Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}`)
+                    $('#second-player span').html(`Won: ${game.playerTwo.results.won} / Lost: ${game.playerTwo.results.lost}`)
+                    console.log(game);
+                }
 
 
             }
@@ -98,10 +119,12 @@ document.querySelector("#two-input").addEventListener('submit', function (e) {
     game.playerOne.name = document.querySelector('#player-one-name').value;
     game.playerTwo.name = document.querySelector('#player-two-name').value;
     //Generate a names input section
-    // const createTally = () => {
 
+    $('#two-input').addClass('hide');
+    $('#player-cards').html(`
+        <a id="first-player" class="collection-item"><span class="badge">Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}</span>${game.playerOne.name}</a>
+        <a id="second-player" class="collection-item"><span class="badge">Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}</span>${game.playerTwo.name}</a>`)
 
-    // }
     console.log(game);
     e.preventDefault();
     console.log(game.playerOne.name.length);
@@ -110,31 +133,37 @@ document.querySelector("#two-input").addEventListener('submit', function (e) {
 //If we have names, proceed to the thing 
 document.querySelector('#board').addEventListener('click', function (e) {
     if (game.playerOne.name.length > 0 && game.playerTwo.name.length > 0) {
-        console.log("greater than 0");
-        // game.playerTurn(e);
+        game.playerTurn(e);
     }
 });
 
 
+//Player 1
+// const p1Top = p1Hoz.every(v => v === hoz[0]);
+// const p1Middle = p1Hoz.every(v => v === hoz[1]);
+// const p1Bottom = p1Hoz.every(v => v === hoz[2]);
+// const p1Left = p1Vert.every(v => v === vert[0]);
+// const p1Center = p1Vert.every(v => v === vert[1]);
+// const p1Right = p1Vert.every(v => v === vert[2]);
 
 
 
 
 
+console.log();
+
+//Player 2 
+// const p2Top = p2Hoz.every(v => v === hoz[0]);
+// const p2Middle = p2Hoz.every(v => v === hoz[1]);
+// const p2Bottom = p2Hoz.every(v => v === hoz[2]);
+// const p2Left = p2Vert.every(v => v === vert[0]);
+// const p2Center = p2Vert.every(v => v === vert[1]);
+// const p2Right = p2Vert.every(v => v === vert[2]);
+// console.log(p1Top, p1Middle, p1Bottom, p1Left, p1Center, p1Right);
+// console.log(p2Top, p2Middle, p2Bottom, p2Left, p2Center, p2Right);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//Conditionals for DOM output
 // if (p1hozTop) {
 //     alert('Player 1 wins Top Row');
 //     pOne.results.won++;
