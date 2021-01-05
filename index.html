@@ -13,19 +13,20 @@
 <body>
 
   <div class="container">
+
     <div class="row">
-      <form class="row">
-        <div class="input-field">
-          <input id="one_player" type="button" class="btn" value="One Player" class="validate">
-          <input id="two_players" type="button" class="btn" value="Two Players" class="validate">
-        </div>
-      </form>
+      <!-- Button choice -->
+      <div class="row">
+        <button id="one-player" class="btn">One Player</button>
+        <button id="two-players" class="btn">Two Players</button>
+      </div>
+
       <!-- Two players -->
-      <form id="two-players" class="row">
+      <form id="two-input" class="row hide">
         <div class="input-field">
-          <input id="player_one" placeholder="Player One" type="text" class="validate">
-          <input id="player_two" placeholder="Player Two" type="text" class="validate">
-          <button class="btn waves-effect waves-light" type="submit" name="action">Play</button>
+          <input id="player-one-name" placeholder="Player One" type="text" class="validate">
+          <input id="player-two-name" placeholder="Player Two" type="text" class="validate">
+          <button id="two-play" class="btn waves-effect waves-light" type="submit">Play</button>
         </div>
       </form>
     </div>
@@ -41,7 +42,7 @@
       <div class="square" id="top-left"></div>
       <div class="square" id="top-center"></div>
       <div class="square" id="top-right"></div>
-      
+
       <div class="square" id="middle-left"></div>
       <div class="square" id="middle-center"></div>
       <div class="square" id="middle-right"></div>
@@ -50,9 +51,13 @@
       <div class="square" id="bottom-right"></div>
     </div>
 
-   
-    <!-- <a id="play-again" class="waves-effect waves-light btn-large"><i class=""></i>Play Again</a> -->
   </div>
+
+
+
+
+  </div>
+
 
 
 

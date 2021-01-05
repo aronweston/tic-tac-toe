@@ -17,7 +17,11 @@ Possibilities
 
 
 
-
+      //Horizontal win conditions are left word of the id: top, middle, bottom
+        //Vertical: right word of the id - left, center, right
+        //Diagonal
+        //Tie = the combined length of both arrays are equal to 9
+        // //loop through or check if the array contains the winning   
 
 
 
