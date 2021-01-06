@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('#pagepiling').pagepiling({
         menu: null,
         navigation: false,
-        sectionsColor: ['white', '#E8E8E8', '#fff', '#EC008C'],
+        sectionsColor: ['white', 'white', 'white', 'white'],
         anchors: ['intro', 'player-choice', 'one', 'two', 'game-board'],
     });
 

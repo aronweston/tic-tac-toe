@@ -7,7 +7,8 @@
   <title>Tic Tac Toe</title>
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/pagepiling.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -32,57 +33,89 @@
       </div>
     </div>
 
-  
 
-   <!-- One player -->
+
+    <!-- One player -->
     <div class="section">
-      <form id="one-input" class="row center-align">
-        <div class="input-field player-input">
-          <input id="one-player-one" placeholder="Player One" type="text" class="validate">
-          <button class="btn waves-effect waves-light" type="submit">Play</button>
-        </div>
-      </form>
+      <div class="container">
+        <form id="one-input" class="row center-align">
+          <div class="input-field">
+            <input id="one-player-one" placeholder="Player One" type="text" class="validate">
+            <button class="btn waves-effect waves-light" type="submit">Play</button>
+          </div>
+        </form>
+      </div>
+
     </div>
 
     <!-- Two players -->
     <div class="section">
-      <form id="two-input" class="row center-align">
-        <div class="input-field player-input">
-          <input id="two-players-one" placeholder="Player 1" type="text" class="validate">
-          <input id="two-players-two" placeholder="Player 2" type="text" class="validate">
+      <div class="container">
+        <form id="two-input" class="row center-align">
+          <div class="col s6">
+            <div class="input-field">
+              <input id="two-players-one" placeholder="Name" type="text" class="validate">
+            </div>
+          </div>
+          <div class="col s6">
+            <div class="input-field">
+              <input id="two-players-two" placeholder="Name" type="text" class="validate">
+            </div>
+            <div class="input-field">
+              <h1>Helo world</h1>
+            </div>
+          </div>
+
+
+
+
           <button class="btn waves-effect waves-light" type="submit">Play</button>
-        </div>
-      </form>
-    </div>
 
-    <!-- Board -->
-    <div class="section">
-      <div id="container">
-        
-        <div id="board">
-          <div class="square" id="1"></div>
-          <div class="square" id="2"></div>
-          <div class="square" id="3"></div>
-          <div class="square" id="4"></div>
-          <div class="square" id="5"></div>
-          <div class="square" id="6"></div>
-          <div class="square" id="7"></div>
-          <div class="square" id="8"></div>
-          <div class="square" id="9"></div>
-        </div>
 
-        <div id="player-cards" class="hide">
-          <h4>Score</h4>
-          <ul class="collection">
-            <li id="tp-p1" class="collection-item active"></li>
-            <li id="tp-p2" class="collection-item"></li>
-          </ul>
-          <a id="play-again" class="btn">Play again</a>
-        </div>
+
 
       </div>
 
+
+
+
+
+      </form>
+
     </div>
+
+  </div>
+
+  </div>
+
+  <!-- Board -->
+  <div class="section">
+    <div id="container">
+
+      <div id="board">
+        <div class="square" id="1"></div>
+        <div class="square" id="2"></div>
+        <div class="square" id="3"></div>
+        <div class="square" id="4"></div>
+        <div class="square" id="5"></div>
+        <div class="square" id="6"></div>
+        <div class="square" id="7"></div>
+        <div class="square" id="8"></div>
+        <div class="square" id="9"></div>
+      </div>
+
+      <div id="player-cards" class="hide">
+        <h4>Score</h4>
+        <ul class="collection">
+          <li id="tp-p1" class="collection-item active"></li>
+          <li id="tp-p2" class="collection-item"></li>
+        </ul>
+        <a id="play-again" class="btn">Play again</a>
+      </div>
+
+    </div>
+
+  </div>
 
   </div>
   </div>
