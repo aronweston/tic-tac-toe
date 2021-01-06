@@ -12,7 +12,7 @@ For example, if the user chose something like this:
 const player1 = ['top', 'top', 'top']
 ```
 
-The `.every()` method would return true as all elements in the user choice array match the winning condition of `top`. This method of win checking is successful on the horizontal and vertical checks as it's impossible for one player to have all three verticals or three horizontals at the same time.
+The `.every()` method would return true as all elements in the user choice array match the winning condition of `top`. This method of win checking is successful on the horizontal and vertical checks as it's impossible for both players to have all three verticals or three horizontals at the same time.
 
 The issues with this branch are: 
 
