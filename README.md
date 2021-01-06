@@ -1,101 +1,20 @@
 # Project 0: Tic Tac Toe
 
-### ToDo's 
-- [x] Build out the board
+This branch contains the version of the project that uses word ID sets that are specific to the square locations on the board. I.e `top-left` and `bottom-right`. 
 
-* Need to figure out a way to update the current  
+The win conditions for this version break using array methods and push the vertical and horizontal positions to an array for each player.
 
+Each player then has a horizontal and vertical choice array. Then, if the length of each array is greater than 3, I use the `.every()` method to check each players choice array against each element in the winning data set. 
 
-This will add the loss/win to the prop but I need to get localStorage to update the value. Or is there an easier way of doing this without 
+For example, if the user chose something like this: 
 
+```js 
+const player1 = ['top', 'top', 'top']
+```
 
+The `.every()` method would return true as all elements in the user choice array match the winning condition of `top`. This method of win checking is successful on the horizontal and vertical checks as it's impossible for one player to have all three verticals or three horizontals at the same time.
 
+The issues with this branch are: 
+    a) **Win conditions are repetitive**: I have to run `.every()` on each possible outcome to get a bunch of true or false conditions, and only then do I run if checks to see who won and where. Not only is this cumbersome, it's also expensive as `.every()` is a higher order array method and if this were to scale, this would be an inefficient system.
 
-
-
-//Horizontal win conditions are left word of the id: top, middle, bottom
-//Vertical: right word of the id - left, center, right
-//Diagonal
-//Tie = the combined length of both arrays are equal to 9
-// //loop through or check if the array contains the winning   
-
-
-
-
-### Instructions
-
-### Big Goals
-
-* **Build a web application from scratch**, without a starter codebase
-* Use your programming skills to **map out the game logic for a simple game like Tic Tac Toe**
-* **Separate HTML, CSS, and JavaScript files** in your application
-* Build an application **to a spec that someone else gives you**
-* **Build a dynamic game that allows two players to compete**
-* **Craft a ``readme.md`` file that explains your app** to the world
-
----
-
-### Technical Requirements
-
-Your app must:
-
-* **Render a game board in the browser**
-* **Switch turns** between X and O (or whichever markers you select)
-* **Visually display which side won** if a player gets three in a row or show a draw/"cat’s game" if neither wins
-* **Include separate HTML / CSS / JavaScript files**
-* Stick with **KISS (Keep It Simple Stupid)** and **DRY (Don't Repeat Yourself)** principles
-* Use **Javascript** for **DOM manipulation**
-* **Deploy your game online**, where the rest of the world can access it
-* Use **semantic markup** for HTML and CSS (adhere to best practices)
-
----
-
-### Bonus
-
-These are for extra credit! Don't focus on these until you've hit the core requirements.
-
-* Keep track of **multiple game rounds** with a win counter
-* Allow players to **customize their tokens** (X, O, name, picture, etc)
-* **Get inventive with your styling**, e.g. use hover effects or animations to spiff things up
-* **Use LocalStorage** to persist data locally to allow games to continue after page refresh or loss of internet connectivity
-* **Support custom board sizes**: default is 3x3 but you could allow users to choose a larger board
-* **Support networked multiplayer**: https://www.firebase.com/ has a nice quickstart guide
-* **TRICKIEST**: Create an AI opponent: teach Javascript to play an unbeatable game against you
-
----
-
-### Necessary Deliverables
-
-* A **working game, built by you**, hosted somewhere on the internet
-* A **link to your hosted working game** in the URL section of your Github repo
-* A **git repository hosted on Github**, with a link to your hosted game, and frequent commits dating back to the very beginning of the project
-* **A ``readme.md`` file** with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
-
----
-
-### Suggested Ways to Get Started
-
-* **Break the project down into different components** (data, presentation, views, style, DOM manipulation) and brainstorm each component individually. Use whiteboards!
-* **Use your Development Tools** (console.log, inspector, alert statements, etc) to debug and solve problems
-* Work through the lessons in class, **ask questions and come to office hours** when you need to. Think about adding relevant code to your Tic Tac Toe game each night, instead of, you know... _procrastinating_.
-* **Commit early, commit often.** Don’t be afraid to break something because you can always go back in time to a previous version.
-* **Check out Tutorial and Documentation resources** (jQuery tutorial) at home to better understand what you’ll be getting into.
-* **Don’t be afraid to write code that you know you will have to remove later.** Create temporary elements (buttons, links, etc) that trigger events if real data is not available. For example, if you’re trying to figure out how to change some text when the game is over but you haven’t solved the win/lose game logic, you can create a button to simulate that until then.
-
----
-
-### Useful Resources
-
-* **[MDN Javascript Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)** _(a great reference for all things Vanilla Javascript)_
-* **[jQuery Docs](http://api.jquery.com)**
-* **[Github Pages](https://pages.github.com)** _(for hosting your game)_
-
----
-
-### If You Finish Early
-
-We invite you to work on any or all of the following:
-
-* A more advanced game (Memory? Battleship? Connect Four?)
-* Your Github portfolio site
-* Any other front-end project that interests you
+    b) **Using strings and not numbers**: By retrieving each of the squares with the `window.event()` object, in this version, returns a string ID that I then need to use array methods to push each vertical and horizontal position. This is an intuitive way, but not scalable. If I were to add more squares, the logic would break. With numbered ID's, I just check the user choice array against winning conditions. Less code, less future headaches. 
