@@ -91,6 +91,17 @@ const game = {
                 const p2Vert = [];
 
                 //Winning conditions
+                const win = {
+                    hozTop: [1, 2, 3],
+                    hozMiddle: [4, 5, 6],
+                    hozBottom: [7, 8, 9],
+                    leftVert: [1, 4, 7],
+                    centerVert: []
+                    
+                }
+
+
+
                 const hoz = ['top', 'middle', 'bottom'];
                 const vert = ['left', 'center', 'right'];
                 const leftD = ['top-left', 'middle-center', 'bottom-right'];
@@ -114,8 +125,6 @@ const game = {
                     game.alertWinner('Player 1 wins top row', p1, p2);
                     game.clearBoard();
                 }
-
-
             }
         }
 
