@@ -1,6 +1,8 @@
 const game = {
     playerOne: {
         name: '',
+        icon: 'X',
+        userIcon: '🤣',
         turn: true,
         choices: [],
         results: {
@@ -10,6 +12,8 @@ const game = {
     },
     playerTwo: {
         name: '',
+        icon: 'O',
+        userIcon: '🤣',
         turn: false,
         choices: [],
         results: {
@@ -21,15 +25,18 @@ const game = {
         const p1 = game.playerOne;
         const p2 = game.playerTwo;
         //TODO: disable click so they don't chuck in trash into the array, no more entries after the single click
-
         if (p1.turn === true) {
-            $(e.target).text("X");
+            $(e.target).html(`<span>${p1.icon}</span>`);
             p1.choices.push(Number(e.target.id));
             p1.turn = false;
+            $('#tp-p1').removeClass('active');
+            $('#tp-p2').addClass('active');
         } else {
-            $(e.target).html('O');
+            $(e.target).html(`<span>${p2.icon}</span>`);
             p2.choices.push(Number(e.target.id));
             p1.turn = true;
+            $('#tp-p2').removeClass('active');
+            $('#tp-p1').addClass('active');
         }
         game.checkWinner(p1, p2)
     },
@@ -54,8 +61,8 @@ const game = {
         loser.results.lost++;
 
         //Update the score
-        $('#first-player span').html(`Won: ${game.playerOne.results.won}`);
-        $('#second-player span').html(`Won: ${game.playerTwo.results.won}`);
+        $('#tp-p1 span').text(`WON: ${game.playerOne.results.won}`);
+        $('#tp-p2 span').text(`WON: ${game.playerTwo.results.won}`);
     },
     whoWon: function (win, player) {
         if (Array.isArray(win) && Array.isArray(player)) {
@@ -106,9 +113,8 @@ const game = {
     }
 }
 
-
-
-
+const p1 = game.playerOne;
+const p2 = game.playerTwo;
 
 
 // //Player Two
@@ -123,9 +129,6 @@ const game = {
 //     }
 // }
 
-
-
-
 // ,{"hozMiddle": [4, 5, 6]
 //     "hozBottom": [7, 8, 9],
 //     "leftVert": [1, 4, 7],
@@ -134,9 +137,6 @@ const game = {
 //     "leftDiag": [1, 5, 9],
 //     "rightDiag": [3, 5, 7]
 // }
-
-
-
 
 // //Alerts to the dom
 // game.alertWinner('Player 1 wins top row', p1, p2);

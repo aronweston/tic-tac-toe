@@ -2,43 +2,32 @@ $(document).ready(function () {
 
     $('#pagepiling').pagepiling({
         menu: null,
-        sectionsColor: ['white', '#E8E8E8', '#f2f2f2', '#EC008C'],
+        navigation: false,
+        sectionsColor: ['white', '#E8E8E8', '#fff', '#EC008C'],
         anchors: ['intro', 'player-choice', 'one', 'two', 'game-board'],
     });
 
-    // //If two players
-    // $('#two-players').on('click', function (e) {
-    //     //Remove the name fields hidden class
-    //     $('#two-input').removeClass('hide');
-    //     e.preventDefault();
-    // })
-
     //Set names and start 
     $("form#two-input").on("submit", function (e) {
-        // $.fn.pagepiling.moveSectionDown("game-board");
-
-
-        console.log($('#player-one-name').val());
-        console.log($('#player-two-name').val());
         
-        // game.playerOne.name = $('#player-one-name').val();
-        // game.playerTwo.name = $('#player-two-name').val();
-        //Generate a names input section
+        game.playerOne.name = $('#two-players-one').val()
+        game.playerTwo.name = $('#two-players-two').val()
 
-        console.log(game);
-        console.log("working");
+        //Remove the hidden class
+        $("#player-cards").removeClass('hide');
 
-        //Add collection items
-        $('#player-cards').addClass('collection-items');
-
+        //Set player 1 output
+        $('#tp-p1').html(`<div>${p1.name}<span class="secondary-content">WIN: ${p1.results.won}</span></div>`);
         
-        // $('<a id="first-player" class="collection-item">').html(`<span class="badge"></span>Won: ${game.playerOne.results.won}</span`).appendTo($('#player-cards'));
-
-        // $('#player-cards').html(`
-        // <a id="first-player" class="collection-item"><span class="badge"> / Lost: ${game.playerOne.results.lost}</span>${game.playerOne.name}</a>
-        // <a id="second-player" class="collection-item"><span class="badge">Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}</span>${game.playerTwo.name}</a>`);
-
+        //Set player 2 output
+        $('#tp-p2').html(`<div>${p2.name}<span class="secondary-content">WIN: ${p2.results.won}</span></div>`);
+        
+        $.fn.pagepiling.moveSectionDown("game-board");
         e.preventDefault();
+    });
+
+    $('#play-again').on('click', function () {
+        game.clearBoard()
     })
 
     //If we have names, proceed to the thing 
