@@ -1,6 +1,6 @@
 const game = {
     playerOne: {
-        name: 'John',
+        name: '',
         turn: true,
         choices: [],
         results: {
@@ -9,7 +9,7 @@ const game = {
         }
     },
     playerTwo: {
-        name: 'Mike',
+        name: '',
         turn: false,
         choices: [],
         results: {
@@ -23,11 +23,11 @@ const game = {
         //TODO: disable click so they don't chuck in trash into the array, no more entries after the single click
 
         if (p1.turn === true) {
-            $(e.target).html("<img src='img/cross.svg'></>");
+            $(e.target).text("X");
             p1.choices.push(Number(e.target.id));
             p1.turn = false;
         } else {
-            $(e.target).html("<img src='img/nought.svg'></>");
+            $(e.target).html('O');
             p2.choices.push(Number(e.target.id));
             p1.turn = true;
         }
@@ -38,11 +38,11 @@ const game = {
         game.playerOne.choices = [];
         game.playerTwo.choices = [];
         //Get board and remove everything in each square
-        const board = document.getElementById('board').children;
-        let boardArray = Array.from(board);
-        console.log(boardArray);
-        boardArray.forEach(square => {
-            square.childNodes[0].remove();
+        const board = Array.from(document.getElementById('board').children);
+        board.forEach(square => {
+            if (square.children.length > 0) {
+                square.childNodes[0].remove();
+            }
         })
     },
     alertWinner: function (msg, winner, loser) {
@@ -54,19 +54,16 @@ const game = {
         loser.results.lost++;
 
         //Update the score
-        $('#first-player span').html(`Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}`);
-        $('#second-player span').html(`Won: ${game.playerTwo.results.won} / Lost: ${game.playerTwo.results.lost}`);
-
-        console.log(game);
+        $('#first-player span').html(`Won: ${game.playerOne.results.won}`);
+        $('#second-player span').html(`Won: ${game.playerTwo.results.won}`);
     },
     whoWon: function (win, player) {
-        //Player Two
         if (Array.isArray(win) && Array.isArray(player)) {
             if (win.length === player.length) {
                 if (win.every((value, index) => value === player[index])) {
-                    return true;
+                    return 1;
                 } else {
-                    return false;
+                    return 0
                 }
             }
         }
@@ -86,24 +83,24 @@ const game = {
                 [1, 5, 9],
                 [3, 5, 7]
             ]
-          
             const tie = playerOne.length + playerTwo.length;
             console.log(tie);
             win.forEach(winner => {
                 const one = game.whoWon(winner, playerOne);
                 const two = game.whoWon(winner, playerTwo);
                 console.log("player one", one, "player two", two);
-                
+
                 if (one) {
                     game.alertWinner("Player one wins", game.playerOne, game.playerTwo);
                     game.clearBoard();
                 } else if (two) {
                     game.alertWinner("Player two wins", game.playerTwo, game.playerOne);
                     game.clearBoard();
-                } else if (tie === 9 && one === false || undefined && two === false || undefined) {
-                    console.log('Tie');
-                    game.clearBoard();
                 }
+                // else if (tie >= 9 && one === false || one === undefined && two === false || two === undefined) {
+                //     console.log('Tie');
+                //     game.clearBoard();
+                // }
             })
         }
     }
