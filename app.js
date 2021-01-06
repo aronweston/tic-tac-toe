@@ -1,6 +1,6 @@
 const game = {
     playerOne: {
-        name: '',
+        name: 'John',
         turn: true,
         choices: [],
         results: {
@@ -9,7 +9,7 @@ const game = {
         }
     },
     playerTwo: {
-        name: '',
+        name: 'Sam',
         turn: false,
         choices: [],
         results: {
@@ -20,7 +20,13 @@ const game = {
     playerTurn: function (e) {
         const p1 = game.playerOne;
         const p2 = game.playerTwo;
+        console.log(p1.choices);
+
+        localStorage.setItem('playerOne', JSON.stringify(game.playerOne));
+        console.log(localStorage.getItem('playerOne', JSON.parse(game.playerOne)));
+
         //TODO: disable click so they don't chuck in trash into the array, no more entries after the single click
+
         if (p1.turn === true) {
             $(e.target).html("<img src='img/cross.svg'></>");
             p1.choices.push(e.target.id);
@@ -30,10 +36,35 @@ const game = {
             p2.choices.push(e.target.id);
             p1.turn = true;
         }
-        game.checkWinner(p1.choices, p2.choices)
+        game.checkWinner(p1, p2)
     },
-    reload: function () {
-        window.location.reload();
+    clearBoard: function () {
+
+        //Clear P1 & P2 choices to reset the game
+        game.playerOne.choices = [];
+        game.playerTwo.choices = [];
+
+        //Get board and remove everything in each square
+        const board = document.getElementById('board').children;
+        let boardArray = Array.from(board);
+        console.log(boardArray);
+        boardArray.forEach(square => {
+            square.childNodes[0].remove();
+        })
+    },
+    alertWinner: function (msg, winner, loser) {
+        //Let them know who won and where
+        alert(msg);
+        
+        //Add to scores
+        winner.results.won++;
+        loser.results.lost++;
+        
+        //Update the score
+        $('#first-player span').html(`Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}`);
+        $('#second-player span').html(`Won: ${game.playerTwo.results.won} / Lost: ${game.playerTwo.results.lost}`);
+
+        console.log(game);
     },
     loop: function (arr, arrHoz, arrVert) {
         arr.forEach(item => {
@@ -45,12 +76,13 @@ const game = {
         })
     },
     checkWinner: function (p1, p2) {
-        //If the length of the current choices is less then 3 then we don't care because no one can even win yet. 
-        if (p1.length >= 3 || p2.length >= 3) {
-            const tie = p1.length + p2.length;
+
+        //If the length of the current choices is less then 3 then we don't care because no one can even win yet.
+        if (p1.choices.length >= 3 || p2.choices.length >= 3) {
+            const tie = p1.choices.length + p2.choices.length;
             if (tie >= 9) {
                 alert("it's a tie");
-                window.location.reload();
+                game.clearBoard();
             } else {
                 //Empty choices arrays
                 const p1Hoz = [];
@@ -65,8 +97,8 @@ const game = {
                 const rightD = ['top-right', 'middle-center', 'bottom-left'];
 
                 //Create two new arrays. These arrays hold the horizontal and vertical values of the player choices. 
-                game.loop(p1, p1Hoz, p1Vert);
-                game.loop(p2, p2Hoz, p2Vert);
+                game.loop(p1.choices, p1Hoz, p1Vert);
+                game.loop(p2.choices, p2Hoz, p2Vert);
 
                 // //Win Conditions
                 // //Player 1 - Horizontal values
@@ -77,28 +109,10 @@ const game = {
                 // console.log(p1);
                 // console.log(p1leftDiag);
 
-
                 const p1Top = p1Hoz.every(v => v === hoz[0]);
                 if (p1Top) {
-                    alert('Player 1 wins Top Row');
-                    game.playerOne.results.won++;
-                    game.playerTwo.results.lost++;
-
-                    //Game finished conditions
-                    game.playerOne.choices = [];
-                    game.playerTwo.choices = [];
-                    let x = document.getElementById('board').children;
-                    let y = Array.from(x);
-                    y.forEach(square => {
-                        square.childNodes[0].remove();
-                    })
-                    console.log(y);
-
-
-                    //Update the score
-                    $('#first-player span').html(`Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}`)
-                    $('#second-player span').html(`Won: ${game.playerTwo.results.won} / Lost: ${game.playerTwo.results.lost}`)
-                    console.log(game);
+                    game.alertWinner('Player 1 wins top row', p1, p2);
+                    game.clearBoard();
                 }
 
 
@@ -123,7 +137,7 @@ document.querySelector("#two-input").addEventListener('submit', function (e) {
     $('#two-input').addClass('hide');
     $('#player-cards').html(`
         <a id="first-player" class="collection-item"><span class="badge">Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}</span>${game.playerOne.name}</a>
-        <a id="second-player" class="collection-item"><span class="badge">Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}</span>${game.playerTwo.name}</a>`)
+        <a id="second-player" class="collection-item"><span class="badge">Won: ${game.playerOne.results.won} / Lost: ${game.playerOne.results.lost}</span>${game.playerTwo.name}</a>`);
 
     console.log(game);
     e.preventDefault();
@@ -138,6 +152,13 @@ document.querySelector('#board').addEventListener('click', function (e) {
 });
 
 
+
+
+
+
+
+
+
 //Player 1
 // const p1Top = p1Hoz.every(v => v === hoz[0]);
 // const p1Middle = p1Hoz.every(v => v === hoz[1]);
@@ -146,11 +167,6 @@ document.querySelector('#board').addEventListener('click', function (e) {
 // const p1Center = p1Vert.every(v => v === vert[1]);
 // const p1Right = p1Vert.every(v => v === vert[2]);
 
-
-
-
-
-console.log();
 
 //Player 2 
 // const p2Top = p2Hoz.every(v => v === hoz[0]);
@@ -180,3 +196,4 @@ console.log();
 //     pTwo.results.lost++;
 //     console.log(game);
 // }
+
