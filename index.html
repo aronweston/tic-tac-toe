@@ -51,75 +51,128 @@
     <!-- Two players -->
     <div class="section">
       <div class="container">
-        <form id="two-input" class="row center-align">
-          <div class="col s6">
+        <form id="two-input" class="row">
+          <!-- Player One -->
+          <div class="col s6 card">
+            <!-- Input -->
             <div class="input-field">
+              <h3>Player 1</h3>
               <input id="two-players-one" placeholder="Name" type="text" class="validate">
             </div>
+            <!-- Player one emojis -->
+            <div id="p1-choice" class="emoji-choice">
+              <label>
+                <input type="radio" name="p1-emoji" value="😂">
+                <img src="img/laugh-smiley.png">
+              </label>
+              <label>
+                <input type="radio" name="p1-emoji" value="🤠">
+                <img src="img/cowboy.png">
+              </label>
+              <label>
+                <input type="radio" name="p1-emoji" value="💩">
+                <img src="img/poop.png">
+              </label>
+              <label>
+                <input type="radio" name="p1-emoji" value="🔥">
+                <img src="img/king.png">
+              </label>
+              <label>
+                <input type="radio" name="p1-emoji" value="👽">
+                <img src="img/alien.png">
+              </label>
+              <label>
+                <input type="radio" name="p1-emoji" value="🔥">
+                <img src="img/fire.png">
+              </label>
+              <label>
+                <input type="radio" name="p1-emoji" value="🤖">
+                <img src="img/robot.png">
+              </label>
+            </div>
           </div>
-          <div class="col s6">
+          <!-- Player Two -->
+          <div class="col s6 card">
+            <!-- Input -->
+            <h3>Player 2</h3>
             <div class="input-field">
               <input id="two-players-two" placeholder="Name" type="text" class="validate">
             </div>
-            <div class="input-field">
-              <h1>Helo world</h1>
+            <!-- Emojis -->
+            <div id="p2-choice" class="emoji-choice">
+              <label>
+                <input type="radio" name="p2-emoji" value="😂">
+                <img src="img/laugh-smiley.png">
+              </label>
+              <label>
+                <input type="radio" name="p2-emoji" value="🤠">
+                <img src="img/cowboy.png">
+              </label>
+              <label>
+                <input type="radio" name="p2-emoji" value="💩">
+                <img src="img/poop.png">
+              </label>
+              <label>
+                <input type="radio" name="p2-emoji" value="🔥">
+                <img src="img/king.png">
+              </label>
+              <label>
+                <input type="radio" name="p2-emoji" value="👽">
+                <img src="img/alien.png">
+              </label>
+              <label>
+                <input type="radio" name="p2-emoji" value="🔥">
+                <img src="img/fire.png">
+              </label>
+              <label>
+                <input type="radio" name="p2-emoji" value="🤖">
+                <img src="img/robot.png">
+              </label>
             </div>
           </div>
-
-
-
-
-          <button class="btn waves-effect waves-light" type="submit">Play</button>
-
-
-
-
+          <!-- Play button -->
+          <div class="row">
+            <div class="col col-12">
+              <button class="btn waves-effect waves-light" type="submit">Play</button>
+            </div>
+          </div>
+        </form>
+        <!--Two players form-->
       </div>
-
-
-
-
-
-      </form>
-
+      <!--Two players container-->
     </div>
+    <!--Two players section-->
 
-  </div>
 
-  </div>
 
-  <!-- Board -->
-  <div class="section">
-    <div id="container">
 
-      <div id="board">
-        <div class="square" id="1"></div>
-        <div class="square" id="2"></div>
-        <div class="square" id="3"></div>
-        <div class="square" id="4"></div>
-        <div class="square" id="5"></div>
-        <div class="square" id="6"></div>
-        <div class="square" id="7"></div>
-        <div class="square" id="8"></div>
-        <div class="square" id="9"></div>
+    <!-- Board -->
+    <div class="section">
+      <div id="container">
+        <div id="board">
+          <div class="square" id="1"></div>
+          <div class="square" id="2"></div>
+          <div class="square" id="3"></div>
+          <div class="square" id="4"></div>
+          <div class="square" id="5"></div>
+          <div class="square" id="6"></div>
+          <div class="square" id="7"></div>
+          <div class="square" id="8"></div>
+          <div class="square" id="9"></div>
+        </div>
+        <div id="player-cards" class="hide">
+          <h4>Score</h4>
+          <ul class="collection">
+            <li id="tp-p1" class="collection-item active"></li>
+            <li id="tp-p2" class="collection-item"></li>
+          </ul>
+          <a id="play-again" class="btn">Play again</a>
+        </div>
       </div>
-
-      <div id="player-cards" class="hide">
-        <h4>Score</h4>
-        <ul class="collection">
-          <li id="tp-p1" class="collection-item active"></li>
-          <li id="tp-p2" class="collection-item"></li>
-        </ul>
-        <a id="play-again" class="btn">Play again</a>
-      </div>
-
     </div>
+    <!--/game board-->
 
   </div>
-
-  </div>
-  </div>
-
   <!--/pagePiling-->
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

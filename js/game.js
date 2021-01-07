@@ -1,7 +1,7 @@
 const game = {
     playerOne: {
         name: '',
-        icon: '🤣',
+        icon: 'X',
         turn: true,
         choices: [],
         results: {
@@ -11,7 +11,7 @@ const game = {
     },
     playerTwo: {
         name: '',
-        icon: '💩',
+        icon: 'O',
         turn: false,
         choices: [],
         results: {
