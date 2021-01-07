@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    //Build the scoreboard
     const buildScoreBoard = () => {
         //Remove the hidden class
         $("#player-cards").removeClass('hide');
@@ -12,6 +13,7 @@ $(document).ready(function () {
         $.fn.pagepiling.moveSectionDown("game-board");
     }
 
+    //pagepiling.js for scroll effects
     $('#pagepiling').pagepiling({
         menu: null,
         navigation: false,
@@ -22,19 +24,20 @@ $(document).ready(function () {
 
     //Set names and start 
     $("form#two-input").on("submit", function (e) {
-
+        //Set the name values
         game.playerOne.name = $('#two-players-one').val()
         game.playerTwo.name = $('#two-players-two').val()
 
+        //Set the icon values
         const player1Icon = $('input[name=p1-emoji]:checked', '#two-input').val();
         const player2Icon = $('input[name=p2-emoji]:checked', '#two-input').val();
 
+        //If they are the same, let them know and reset
         if (player1Icon === player2Icon) {
-            console.log(player1Icon, player2Icon);
             alert('I know you guys are mates, but pick different icons.');
             $('#two-input').trigger("reset");
         } else {
-            console.log(player1Icon, player2Icon);
+            //if all good, build the score board and set the icons
             game.playerOne.icon = player1Icon;
             game.playerTwo.icon = player2Icon;
             console.log(game);
@@ -56,3 +59,4 @@ $(document).ready(function () {
     });
 
 })
+
