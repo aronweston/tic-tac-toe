@@ -12,16 +12,13 @@ Logic
 - pass this data back into a set object 
 - 
 
-
 User Interface
 Styling 
 
 
-## Unsolved problems
+## Bugs
 
 ## Future TODO's
-
-
 
 
 ### Key deliverables
@@ -41,6 +38,5 @@ Styling
 - [ ] Implement a system where the grid grows to 6*6 and 9*9 with auto generated IDs
 - [ ]
 
-### 
 
 
