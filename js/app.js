@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
 
+
     //Build the scoreboard
     const buildScoreBoard = () => {
         //Remove the hidden class
@@ -22,7 +23,6 @@ $(document).ready(function () {
         anchors: ['intro', 'player-choice', 'one', 'two', 'game-board'],
     });
 
-
     //Set names and start 
     $("form#two-input").on("submit", function (e) {
         //Set the name values
@@ -41,7 +41,6 @@ $(document).ready(function () {
             //if all good, build the score board and set the icons
             game.playerOne.icon = player1Icon;
             game.playerTwo.icon = player2Icon;
-            console.log(game);
             buildScoreBoard();
         }
         e.preventDefault();

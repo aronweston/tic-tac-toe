@@ -120,3 +120,12 @@ a {
 .emoji-choice img {
     width: 50px;
 }
+
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
