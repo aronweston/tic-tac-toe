@@ -115,7 +115,6 @@ const game = {
         game.showWin(first, second, third);
         game.clearBoard();
     },
-    //Build the scoreboard
     buildScoreBoard: function () {
         //Remove the hidden class
         $("#player-cards").removeClass('hide');
@@ -123,7 +122,6 @@ const game = {
         $('#tp-p1').html(`<div>${p1.icon} ${p1.name}<span class="secondary-content">WIN: ${p1.results.won}</span></div>`);
         //Set player 2 output
         $('#tp-p2').html(`<div>${p2.icon} ${p2.name}<span class="secondary-content">WIN: ${p2.results.won}</span></div>`);
-        $.fn.pagepiling.moveSectionDown("game-board");
     },
     clearBoard: function () {
         //Clear the player one and player two selection arrays to restart the game
@@ -158,7 +156,7 @@ const game = {
             $(`div#${a}`).removeClass('green');
             $(`div#${b}`).removeClass('green');
             $(`div#${c}`).removeClass('green');
-        }, 1000);
+        }, 2000);
     },
     showTie: function (t) {
         if (t) {
@@ -168,7 +166,7 @@ const game = {
             setTimeout(() => {
                 $('#alert').addClass('hide');
                 $('div.square').removeClass('red');
-            }, 1000);
+            }, 2000);
         }
     }
 }

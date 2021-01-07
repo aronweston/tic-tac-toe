@@ -18,8 +18,16 @@ $(document).ready(function () {
             //if all good, build the score board and set the icons
             game.playerOne.icon = player1Icon;
             game.playerTwo.icon = player2Icon;
-            game.buildScoreBoard();
+            
+            
+            $("#get-ready .container").html(`<h2>Are you ready?</h2><h2 id="name">${game.playerOne.name}</h2><h2>you're up first.</h2>`)
+            $.fn.pagepiling.moveSectionDown("ready");
+            setTimeout(() => {
+                game.buildScoreBoard();
+                $.fn.pagepiling.moveSectionDown("game-board");
+            }, 3000);
         }
+        
         e.preventDefault();
     });
 
@@ -34,8 +42,10 @@ $(document).ready(function () {
     $('#pagepiling').pagepiling({
         menu: null,
         navigation: false,
+        direction: 'vertical',
+        verticalCentered: true,
         sectionsColor: ['white', 'white', 'white', 'white'],
-        anchors: ['player-choice', 'two', 'game-board'],
+        anchors: ['player-choice', 'two', 'ready', 'game-board'],
     });
 
     //Clear board on button click
