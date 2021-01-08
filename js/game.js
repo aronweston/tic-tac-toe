@@ -1,6 +1,6 @@
 const game = {
     playerOne: {
-        name: 'Frank',
+        name: '',
         icon: 'X',
         turn: true,
         choices: [],
@@ -10,7 +10,7 @@ const game = {
         }
     },
     playerTwo: {
-        name: 'Steve',
+        name: '',
         icon: 'O',
         turn: false,
         choices: [],
@@ -25,7 +25,6 @@ const game = {
         const p2 = game.playerTwo;
         
         //Once the game has started and the names are entered. Player 1 defaults to X and its their turn first. As the event object is passed in we can both access the target ID and push to each players choices array. And, we can output their chosen icon to the same target in the DOM. We then add the active classes to show who's turn it is. 
-
         if (p1.turn === true) {
             p1.choices.push(Number(e.target.id));
             $(e.target).html(`<span>${p1.icon}</span>`);
@@ -115,38 +114,6 @@ const game = {
         game.showWin(first, second, third);
         game.clearBoard();
     },
-    buildScoreBoard: function () {
-        //Remove the hidden class
-        $("#player-cards").removeClass('hide');
-        //Set player 1 output
-        $('#tp-p1').html(`<div>${p1.icon} ${p1.name}<span class="secondary-content">WIN: ${p1.results.won}</span></div>`);
-        //Set player 2 output
-        $('#tp-p2').html(`<div>${p2.icon} ${p2.name}<span class="secondary-content">WIN: ${p2.results.won}</span></div>`);
-    },
-    clearBoard: function () {
-        //Clear the player one and player two selection arrays to restart the game
-        game.playerOne.choices = [];
-        game.playerTwo.choices = [];
-
-        //Give player one their starting turn back
-        game.playerOne.turn = true;
-
-        setTimeout(() => {
-            //Get board and remove everything in each square
-            game.loopBoard((square) => {
-            if (square.children.length > 0) {
-                square.childNodes[0].remove();
-            }
-        });
-        }, 1000);
-    },
-    // A utility method used throughout the project to prevent repeating loops everywhere and to provide a way of getting all of the squares on the board for different conditionals. This is achieved through the callBack function that will execute within a loop on the board array.
-    loopBoard: function (callBack) {
-        const board = Array.from(document.getElementById('board').children);
-        board.forEach(square => {
-            callBack(square);
-        })
-    },
     showWin: function (a, b, c) {
         //Add the winning array ID's to target the DOM elements and add a green class to them when they have won.
         $(`div#${a}`).addClass('green');
@@ -168,6 +135,38 @@ const game = {
                 $('div.square').removeClass('red');
             }, 2000);
         }
+    },
+    clearBoard: function () {
+        //Clear the player one and player two selection arrays to restart the game
+        game.playerOne.choices = [];
+        game.playerTwo.choices = [];
+
+        //Give player one their starting turn back
+        game.playerOne.turn = true;
+
+        setTimeout(() => {
+            //Get board and remove everything in each square
+            game.loopBoard((square) => {
+            if (square.children.length > 0) {
+                square.childNodes[0].remove();
+            }
+        });
+        }, 1000);
+    },
+    loopBoard: function (callBack) {
+        // A utility method used throughout the project to prevent repeating loops everywhere and to provide a way of getting all of the squares on the board for different conditionals. This is achieved through the callBack function that will execute within a loop on the board array.
+        const board = Array.from(document.getElementById('board').children);
+        board.forEach(square => {
+            callBack(square);
+        })
+    },
+    buildScoreBoard: function () {
+        //Remove the hidden class
+        $("#player-cards").removeClass('hide');
+        //Set player 1 output
+        $('#tp-p1').html(`<div>${p1.icon} ${p1.name}<span class="secondary-content">WIN: ${p1.results.won}</span></div>`);
+        //Set player 2 output
+        $('#tp-p2').html(`<div>${p2.icon} ${p2.name}<span class="secondary-content">WIN: ${p2.results.won}</span></div>`);
     }
 }
 
@@ -175,27 +174,3 @@ const game = {
 const p1 = game.playerOne;
 const p2 = game.playerTwo;
 
-// Stretch Goals
-
-// getPlayer1: function (player) {
-//     let player;
-//     if (!localStorage.getItem('player1')) {
-//         player = [];
-//     } else {
-//         player = JSON.parse(localStorage.getItem('player1'));
-//     }
-//     return player;
-// },
-// getPlayer2: function (player) {
-//     let player;
-//     if (!localStorage.getItem('player2')) {
-//         player = [];
-//     } else {
-//         player = JSON.parse(localStorage.getItem('player2'));
-//     }
-//     return player;
-// },
-// addStorage: function (obj) {
-//     const player = game.getPlayers
-
-// }
