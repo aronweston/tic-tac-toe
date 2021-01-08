@@ -1,3 +1,5 @@
+const firebase = new Firebase();
+
 const game = {
     playerOne: {
         name: '',
@@ -19,21 +21,7 @@ const game = {
             lost: 0
         }
     },
-    pushDB: function (playerRef, playerObj) {
-        //Set the players up with their choices
-        playerRef.set({
-            playerName: playerObj.name,
-            playerChoices: playerObj.choices,
-            playerResults: playerObj.results,
-            playerIcon: playerObj.icon,
-            playerChoices: playerObj.choices
-        });
-    },
-    pushChoices: function (playerRef, playerObj) {
-        playerRef.update({
-            playerChoices: playerObj.choices,
-        });
-    },
+    
     playerTurn: function (e) {
 
         const p1 = game.playerOne;
@@ -41,8 +29,11 @@ const game = {
 
         if (p1.turn === true) {
             p1.choices.push(Number(e.target.id));
-            game.pushChoices(playerOneDB, p1);
+
+            firebase.pushChoices(playerOneDB, p1);
+
             $(e.target).html(`<span>${p1.icon}</span>`);
+
             p1.turn = false;
             //Show in the tally box who's turn it is 
             $('#tp-p1').removeClass('active');
@@ -50,7 +41,8 @@ const game = {
         } else {
             $(e.target).html(`<span>${p2.icon}</span>`);
             p2.choices.push(Number(e.target.id));
-            game.pushChoices(playerTwoDB, p2);
+            //Push the choices to the DB
+            firebase.pushChoices(playerTwoDB, p2);
             p1.turn = true;
             $('#tp-p2').removeClass('active');
             $('#tp-p1').addClass('active');
@@ -147,9 +139,13 @@ const game = {
     },
     clearBoard: function () {
 
-        
+        //Clear locally
         game.playerOne.choices = [];
         game.playerTwo.choices = [];
+
+        //Clear DB choices
+        firebase.pushChoices(playerOneDB, p1, true);
+        firebase.pushChoices(playerTwoDB, p2, true);
 
         game.playerOne.turn = true;
 

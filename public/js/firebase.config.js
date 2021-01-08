@@ -7,7 +7,48 @@ const firebaseConfig = {
   messagingSenderId: "230443141608",
   appId: "1:230443141608:web:755a1ec6ffb65d713a7c5d"
 };
+
 firebase.initializeApp(firebaseConfig);
 
-const playerOneDB = firebase.database().ref('player1');
-const playerTwoDB = firebase.database().ref('player2');
+class Firebase {
+  constructor() {
+    this.playerOneDB = firebase.database().ref('player1');
+    this.playerTwo = firebase.database().ref('player2');;
+  }
+
+  pushDB(playerRef, playerObj) {
+    //Set the players up with their choices
+    playerRef.set({
+      playerName: playerObj.name,
+      playerChoices: playerObj.choices,
+      playerResults: playerObj.results,
+      playerIcon: playerObj.icon,
+      playerChoices: playerObj.choices
+    });
+    game.getDB(playerRef)
+  }
+
+  pushChoices(playerRef, playerObj, del = false) {
+    if (del === true) {
+      playerRef.update({
+        playerChoices: null,
+      });
+    } else {
+      playerRef.update({
+        playerChoices: playerObj.choices,
+      });
+    }
+  }
+
+  getDB(playerRef) {
+    //Take the the player reference and  
+    playerRef.on("value", function (snapshot) {
+      console.log(snapshot.val());
+    }, function (error) {
+      console.log("Error: " + error.code);
+    })
+
+  }
+}
+
+const firebase = new Firebase();
