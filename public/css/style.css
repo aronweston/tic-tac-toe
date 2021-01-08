@@ -1,0 +1,99 @@
+/*--------------------------------------------------------------
+# Utility Classes
+--------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+
+h1, h2, span, h4{
+    font-family: 'Sigmar One', cursive;
+}
+
+#container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.btn.large {
+    margin-top: 2rem;
+}
+
+#name {
+    color: red;
+}
+
+/*--------------------------------------------------------------
+# Board Grid
+--------------------------------------------------------------*/
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.square {
+    text-align: center;
+    border: 10px solid black;
+}
+
+.square:nth-child(4), .square:nth-child(6) {
+    border-left: none;
+    border-right: none;
+}
+
+.square:nth-child(2), .square:nth-child(8) {
+    border-top: none;
+    border-bottom: none;
+}
+
+.square:nth-child(1), .square:nth-child(3), .square:nth-child(7), .square:nth-child(9) {
+    border: none;
+}
+
+.square span {
+    font-size: 95px;
+    vertical-align: middle;
+}
+
+/*--------------------------------------------------------------
+# Two Player Input
+--------------------------------------------------------------*/
+
+/* HIDE RADIO */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio]+img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+#p1-choice [type=radio]:checked+img {
+    transform: translate(0px, -10px);
+    transition: 0.5s all ease-in-out;
+}
+
+#p2-choice [type=radio]:checked+img {
+    transform: translate(0px, -10px);
+    transition: 0.5s all ease-in-out;
+}
+
+.emoji-choice img {
+    width: 50px;
+}
+

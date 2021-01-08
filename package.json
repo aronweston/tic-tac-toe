@@ -1,0 +1,19 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "tic tac toe app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aronweston/tic-tac-toe.git"
+  },
+  "author": "Aron W",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aronweston/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/aronweston/tic-tac-toe#readme"
+}
