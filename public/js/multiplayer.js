@@ -1,4 +1,4 @@
-class Game {
+class Multiplayer {
 
     constructor() {
         this.playerOne = {
@@ -18,8 +18,38 @@ class Game {
             won: 0,
             lost: 0
         }
+    }
 
-        this.win = [
+    turn(e) {
+        if (p1.turn === true) {
+            $(e.target).html(`<span>${this.playerOne.icon}</span>`);
+            this.playerOne.choices.push(Number(e.target.id));
+
+
+            //Reset UI
+            this.playerOne.turn = false;
+            $('#tp-p1').removeClass('active');
+            $('#tp-p2').addClass('active');
+        } else {
+            $(e.target).html(`<span>${this.playerTwo.icon}</span>`);
+            this.playerTwo.choices.push(Number(e.target.id));
+
+            //Reset UI
+            this.playerOne.turn = true;
+            $('#tp-p2').removeClass('active');
+            $('#tp-p1').addClass('active');
+        }
+        this.checkWinner()
+    }
+
+
+    checkWinner() {
+
+        const playerOne = this.playerOne.choices.sort();
+        const playerTwo = this.playerTwo.choices.sort();
+        const tie = playerOne.length + playerTwo.length;
+
+        const win = [
             [1, 2, 3],
             [4, 5, 6],
             [7, 8, 9],
@@ -29,31 +59,6 @@ class Game {
             [1, 5, 9],
             [3, 5, 7]
         ]
-    }
-
-    playerTurn(e) {
-        if (playerOne.turn === true) {
-            $(e.target).html(`<span>${this.playerOne.icon}</span>`);
-            this.playerOne.choices.push(Number(e.target.id));
-            this.playerOne.turn = false;
-            $('#tp-p1').removeClass('active');
-            $('#tp-p2').addClass('active');
-        } else {
-            $(e.target).html(`<span>${this.playerTwo.icon}</span>`);
-            this.playerTwo.choices.push(Number(e.target.id));
-            // firebase.pushChoices(playerTwoDB, p2);
-            this.playerOne.turn = true;
-            $('#tp-p2').removeClass('active');
-            $('#tp-p1').addClass('active');
-        }
-        this.checkWinner()
-    }
-
-    checkWinner() {
-
-        const playerOne = this.playerOne.choices.sort();
-        const playerTwo = this.playerTwo.choices.sort();
-        const tie = playerOne.length + playerTwo.length;
 
         const check = ([a, b, c], arr) => {
             if (arr.includes(a) && arr.includes(b) && arr.includes(c)) {
@@ -63,30 +68,29 @@ class Game {
             }
         }
 
-        for (i = 0; i < this.win.length; i++) {
-            const oneWin = check(this.win[i], playerOne)
-            const twoWin = check(this.win[i], playerTwo)
+        for (i = 0; i < win.length; i++) {
+            const oneWin = check(win[i], playerOne)
+            const twoWin = check(win[i], playerTwo)
             let res;
             //Player One Win
             if (oneWin) {
-                ui.alertWinner(this.playerOne, this.playerTwo, win[i]);
+                game.alertWinner(this.playerOne, this.playerTwo, win[i]);
             } else {
                 res = false;
             }
 
             //Player Two Win
             if (twoWin) {
-                ui.alertWinner(this.playerTwo, this.playerOne, win[i]);
+                game.alertWinner(this.playerTwo, this.playerOne, win[i]);
             } else {
                 res = false;
             }
 
-            //Tie condition
             if (tie === 9 && !twoWin && !oneWin) {
                 if (!res) {
-                    ui.showTie(true);
+                    game.showTie(true);
                     setTimeout(() => {
-                        ui.clearBoard();
+                        game.clearBoard();
                     }, 2000);
                     break;
                 }
@@ -95,4 +99,4 @@ class Game {
     }
 }
 
-const game = new Game();
+const multiplayer = new Multiplayer();

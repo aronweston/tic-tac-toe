@@ -8,8 +8,7 @@ const firebaseConfig = {
   appId: "1:230443141608:web:755a1ec6ffb65d713a7c5d"
 }
 
-const init = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-//Define database references
 const playerOneDB = firebase.database().ref('player1');
 const playerTwoDB = firebase.database().ref('player2');

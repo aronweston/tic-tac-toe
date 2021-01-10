@@ -1,43 +1,43 @@
 class Firebase {
 
-  pushDB(playerRef, playerObj) {
+  pushDB(player) {
     //Set the players up with their choices
-    playerRef.set({
+    player.ref.set({
       name: playerObj.name,
       choices: playerObj.choices,
       icon: playerObj.icon,
       win: playerObj.win,
       lost: playerObj.lost
     });
-    this.getDB(playerRef)
+    this.getDB(player)
   }
 
-  getDB(playerRef) {
+  getDB(player) {
     //Take the the player reference and  
-    playerRef.on("value", function (snapshot) {
+    player.ref.on("value", function (snapshot) {
       console.log(snapshot.val());
     }, function (error) {
       console.log("Error: " + error.code);
     })
   }
 
-  updateRes(winnerRef, loserRef) {
-    winnerRef.update({
-      win: winnerRef.win++
+  updateRes(winner, loser) {
+    winner.ref.update({
+      win: winner.win++
     })
-    loserRef.update({
-      lost: loserRef.lost++
+    loser.ref.update({
+      lost: loser.lost++
     })
   }
 
-  pushChoices(playerRef, playerObj, del = false) {
+  pushChoices(player, del = false) {
     if (del === true) {
-      playerRef.update({
-        playerChoices: null,
+      player.ref.update({
+        choices: null,
       });
     } else {
-      playerRef.update({
-        playerChoices: playerObj.choices,
+      player.ref.update({
+        choices: player.choices,
       });
     }
   }

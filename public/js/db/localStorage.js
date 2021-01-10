@@ -1,14 +1,14 @@
-class localStorage {
+// class localStorage {
 
-    setLS() {
+//     setLS() {
         
-    }
+//     }
 
-    getLS() {
+//     getLS() {
         
-    }
+//     }
 
 
-}
+// }
 
-const localStorage = new localStorage();
+// const localStorage = new localStorage();
