@@ -16,10 +16,13 @@ $(document).ready(function () {
             game.playerOne.icon = player1Icon;
             game.playerTwo.icon = player2Icon;
             
-            game.pushDB(playerOneDB, game.playerOne);
-            game.pushDB(playerTwoDB, game.playerTwo);
+            firebase.pushDB(playerOneDB, game.playerOne);
+            firebase.pushDB(playerTwoDB, game.playerTwo);
             
-
+            //Get DB's
+            firebase.getDB(playerOneDB, game.playerOne);
+            firebase.getDB(playerTwoDB, game.playerTwo);
+            
             $("#get-ready .container").html(`<h2>Are you ready?</h2><h2 id="name">${game.playerOne.name}</h2><h2>you're up first.</h2>`)
             $.fn.pagepiling.moveSectionDown("ready");
             setTimeout(() => {

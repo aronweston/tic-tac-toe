@@ -1,27 +1,20 @@
-const firebase = new Firebase();
-
 const game = {
     playerOne: {
         name: '',
         icon: 'X',
         turn: true,
         choices: [],
-        results: {
-            won: 0,
-            lost: 0
-        }
+        won: 0,
+        lost: 0
     },
     playerTwo: {
         name: '',
         icon: 'O',
         turn: false,
         choices: [],
-        results: {
-            won: 0,
-            lost: 0
-        }
+        won: 0,
+        lost: 0
     },
-    
     playerTurn: function (e) {
 
         const p1 = game.playerOne;
@@ -41,7 +34,8 @@ const game = {
         } else {
             $(e.target).html(`<span>${p2.icon}</span>`);
             p2.choices.push(Number(e.target.id));
-            //Push the choices to the DB
+
+
             firebase.pushChoices(playerTwoDB, p2);
             p1.turn = true;
             $('#tp-p2').removeClass('active');
@@ -77,21 +71,30 @@ const game = {
         for (i = 0; i < win.length; i++) {
             const oneWin = check(win[i], playerOne)
             const twoWin = check(win[i], playerTwo)
+            let res;
 
+            //Player One Win
             if (oneWin) {
                 game.alertWinner(p1, p2, win[i]);
+            } else {
+                res = false;
             }
 
+            //Player Two Win
             if (twoWin) {
                 game.alertWinner(p2, p1, win[i]);
+            } else {
+                res = false;
             }
 
             if (tie === 9 && !twoWin && !oneWin) {
-                game.showTie(true);
-                setTimeout(() => {
-                    game.clearBoard();
-                }, 2000);
-                break;
+                if (!res) {
+                    game.showTie(true);
+                    setTimeout(() => {
+                        game.clearBoard();
+                    }, 2000);
+                    break;
+                }
             }
         };
     },
@@ -103,12 +106,13 @@ const game = {
             $('#alert').addClass('hide');
         }, 2000);
 
-        winner.results.won++;
-        loser.results.lost++;
+        winner.won++;
+        loser.lost++;
+        firebase.updateRes(winner, loser);
 
         //Output above to DOM
-        $('#tp-p1 span').text(`WON: ${game.playerOne.results.won}`);
-        $('#tp-p2 span').text(`WON: ${game.playerTwo.results.won}`);
+        $('#tp-p1 span').text(`WON: ${game.playerOne.won}`);
+        $('#tp-p2 span').text(`WON: ${game.playerTwo.won}`);
 
         const [first, second, third] = winArr;
 
@@ -142,12 +146,11 @@ const game = {
         //Clear locally
         game.playerOne.choices = [];
         game.playerTwo.choices = [];
+        game.playerOne.turn = true;
 
         //Clear DB choices
         firebase.pushChoices(playerOneDB, p1, true);
         firebase.pushChoices(playerTwoDB, p2, true);
-
-        game.playerOne.turn = true;
 
         setTimeout(() => {
             game.loopBoard((square) => {
@@ -165,8 +168,8 @@ const game = {
     },
     buildScoreBoard: function () {
         $("#player-cards").removeClass('hide');
-        $('#tp-p1').html(`<div>${p1.icon} ${p1.name}<span class="secondary-content">WIN: ${p1.results.won}</span></div>`);
-        $('#tp-p2').html(`<div>${p2.icon} ${p2.name}<span class="secondary-content">WIN: ${p2.results.won}</span></div>`);
+        $('#tp-p1').html(`<div>${p1.icon} ${p1.name}<span class="secondary-content">WIN: ${p1.won}</span></div>`);
+        $('#tp-p2').html(`<div>${p2.icon} ${p2.name}<span class="secondary-content">WIN: ${p2.won}</span></div>`);
     }
 }
 
