@@ -1,5 +1,4 @@
 class Game {
-
     constructor() {
         this.playerOne = {
             name: '',
