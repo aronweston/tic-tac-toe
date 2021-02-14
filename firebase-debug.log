@@ -1,0 +1,142 @@
+[debug] [2021-01-08T05:01:51.723Z] ----------------------------------------------------------------------
+[debug] [2021-01-08T05:01:51.725Z] Command:       /usr/local/bin/firebase /Users/aron/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2021-01-08T05:01:51.725Z] CLI Version:   7.16.1
+[debug] [2021-01-08T05:01:51.725Z] Platform:      darwin
+[debug] [2021-01-08T05:01:51.725Z] Node Version:  v12.13.1
+[debug] [2021-01-08T05:01:51.726Z] Time:          Fri Jan 08 2021 16:01:51 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2021-01-08T05:01:51.727Z] ----------------------------------------------------------------------
+[debug] [2021-01-08T05:01:51.727Z] 
+[debug] [2021-01-08T05:01:51.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-08T05:01:51.734Z] > authorizing via signed-in user
+[debug] [2021-01-08T05:01:51.734Z] [iam] checking project tic-tac-toe-3c214 for permissions ["firebase.projects.get"]
+[debug] [2021-01-08T05:01:51.737Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/tic-tac-toe-3c214:testIamPermissions  
+
+[debug] [2021-01-08T05:01:52.916Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-08T05:01:52.918Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214  
+ 
+[debug] [2021-01-08T05:01:53.406Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/aron/Projects/tictactoe'...
+[info] 
+[debug] [2021-01-08T05:01:53.410Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214/webApps/-/config  
+ 
+[debug] [2021-01-08T05:01:54.734Z] <<< HTTP RESPONSE 200
+[info] i  hosting[tic-tac-toe-3c214]: Serving hosting files from: public
+[info] ✔  hosting[tic-tac-toe-3c214]: Local server: http://localhost:5000
+[debug] [2021-01-08T07:50:30.170Z] ----------------------------------------------------------------------
+[debug] [2021-01-08T07:50:30.172Z] Command:       /usr/local/bin/firebase /Users/aron/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2021-01-08T07:50:30.172Z] CLI Version:   7.16.1
+[debug] [2021-01-08T07:50:30.172Z] Platform:      darwin
+[debug] [2021-01-08T07:50:30.172Z] Node Version:  v12.13.1
+[debug] [2021-01-08T07:50:30.177Z] Time:          Fri Jan 08 2021 18:50:30 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2021-01-08T07:50:30.177Z] ----------------------------------------------------------------------
+[debug] [2021-01-08T07:50:30.177Z] 
+[debug] [2021-01-08T07:50:30.186Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-08T07:50:30.187Z] > authorizing via signed-in user
+[debug] [2021-01-08T07:50:30.187Z] [iam] checking project tic-tac-toe-3c214 for permissions ["firebase.projects.get"]
+[debug] [2021-01-08T07:50:30.189Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-01-08T07:50:30.189Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-01-08T07:50:30.510Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-08T07:50:30.529Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/tic-tac-toe-3c214:testIamPermissions  
+
+[debug] [2021-01-08T07:50:30.976Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-08T07:50:30.978Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214  
+ 
+[debug] [2021-01-08T07:50:31.471Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/aron/Projects/tictactoe'...
+[info] 
+[debug] [2021-01-08T07:50:31.474Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214/webApps/-/config  
+ 
+[debug] [2021-01-08T07:50:33.083Z] <<< HTTP RESPONSE 200
+[info] i  hosting[tic-tac-toe-3c214]: Serving hosting files from: public
+[info] ✔  hosting[tic-tac-toe-3c214]: Local server: http://localhost:5000
+[debug] [2021-01-09T00:04:41.677Z] ----------------------------------------------------------------------
+[debug] [2021-01-09T00:04:41.678Z] Command:       /usr/local/bin/firebase /Users/aron/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2021-01-09T00:04:41.678Z] CLI Version:   7.16.1
+[debug] [2021-01-09T00:04:41.678Z] Platform:      darwin
+[debug] [2021-01-09T00:04:41.678Z] Node Version:  v12.13.1
+[debug] [2021-01-09T00:04:41.683Z] Time:          Sat Jan 09 2021 11:04:41 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2021-01-09T00:04:41.683Z] ----------------------------------------------------------------------
+[debug] [2021-01-09T00:04:41.683Z] 
+[debug] [2021-01-09T00:04:41.692Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-09T00:04:41.692Z] > authorizing via signed-in user
+[debug] [2021-01-09T00:04:41.692Z] [iam] checking project tic-tac-toe-3c214 for permissions ["firebase.projects.get"]
+[debug] [2021-01-09T00:04:41.695Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-01-09T00:04:41.695Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-01-09T00:04:42.007Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-09T00:04:42.027Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/tic-tac-toe-3c214:testIamPermissions  
+
+[debug] [2021-01-09T00:04:42.568Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-09T00:04:42.569Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214  
+ 
+[debug] [2021-01-09T00:04:43.182Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/aron/Projects/tictactoe'...
+[info] 
+[debug] [2021-01-09T00:04:43.185Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214/webApps/-/config  
+ 
+[debug] [2021-01-09T00:04:44.614Z] <<< HTTP RESPONSE 200
+[info] i  hosting[tic-tac-toe-3c214]: Serving hosting files from: public
+[info] ✔  hosting[tic-tac-toe-3c214]: Local server: http://localhost:5000
+[debug] [2021-01-10T04:13:10.966Z] ----------------------------------------------------------------------
+[debug] [2021-01-10T04:13:10.968Z] Command:       /usr/local/bin/firebase /Users/aron/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2021-01-10T04:13:10.968Z] CLI Version:   7.16.1
+[debug] [2021-01-10T04:13:10.968Z] Platform:      darwin
+[debug] [2021-01-10T04:13:10.968Z] Node Version:  v12.13.1
+[debug] [2021-01-10T04:13:10.969Z] Time:          Sun Jan 10 2021 15:13:10 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2021-01-10T04:13:10.969Z] ----------------------------------------------------------------------
+[debug] [2021-01-10T04:13:10.969Z] 
+[debug] [2021-01-10T04:13:10.980Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-10T04:13:10.980Z] > authorizing via signed-in user
+[debug] [2021-01-10T04:13:10.980Z] [iam] checking project tic-tac-toe-3c214 for permissions ["firebase.projects.get"]
+[debug] [2021-01-10T04:13:10.982Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-01-10T04:13:10.982Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-01-10T04:13:11.303Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-10T04:13:11.327Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/tic-tac-toe-3c214:testIamPermissions  
+
+[debug] [2021-01-10T04:13:12.584Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-10T04:13:12.586Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214  
+ 
+[debug] [2021-01-10T04:13:13.160Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/aron/Projects/tictactoe'...
+[info] 
+[debug] [2021-01-10T04:13:13.163Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214/webApps/-/config  
+ 
+[debug] [2021-01-10T04:13:14.789Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting[tic-tac-toe-3c214]: Serving hosting files from: public
+[info] ✔  hosting[tic-tac-toe-3c214]: Local server: http://localhost:5005
+[debug] [2021-01-12T09:57:29.727Z] ----------------------------------------------------------------------
+[debug] [2021-01-12T09:57:29.728Z] Command:       /usr/local/bin/firebase /Users/aron/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2021-01-12T09:57:29.728Z] CLI Version:   7.16.1
+[debug] [2021-01-12T09:57:29.729Z] Platform:      darwin
+[debug] [2021-01-12T09:57:29.729Z] Node Version:  v12.13.1
+[debug] [2021-01-12T09:57:29.730Z] Time:          Tue Jan 12 2021 20:57:29 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2021-01-12T09:57:29.730Z] ----------------------------------------------------------------------
+[debug] [2021-01-12T09:57:29.730Z] 
+[debug] [2021-01-12T09:57:29.739Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-12T09:57:29.740Z] > authorizing via signed-in user
+[debug] [2021-01-12T09:57:29.740Z] [iam] checking project tic-tac-toe-3c214 for permissions ["firebase.projects.get"]
+[debug] [2021-01-12T09:57:29.741Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-01-12T09:57:29.742Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-01-12T09:57:30.070Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-12T09:57:30.085Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/tic-tac-toe-3c214:testIamPermissions  
+
+[debug] [2021-01-12T09:57:31.401Z] <<< HTTP RESPONSE 200
+[debug] [2021-01-12T09:57:31.402Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214  
+ 
+[debug] [2021-01-12T09:57:31.855Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/aron/Projects/tictactoe'...
+[info] 
+[debug] [2021-01-12T09:57:31.858Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tic-tac-toe-3c214/webApps/-/config  
+ 
+[debug] [2021-01-12T09:57:33.245Z] <<< HTTP RESPONSE 200
+[info] i  hosting[tic-tac-toe-3c214]: Serving hosting files from: public
+[info] ✔  hosting[tic-tac-toe-3c214]: Local server: http://localhost:5000
